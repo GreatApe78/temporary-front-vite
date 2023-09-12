@@ -8,7 +8,7 @@ export function useContract() {
 
 export function ContractProvider({ children }) {
     
-const [contractAddress, setContractAddress] = useState(/* POKETOKEN_DATA.networks[4002].address */"0xb488f5290F2af44E2F950D2BA3240a7c39860B6a");
+const [contractAddress, setContractAddress] = useState(/* POKETOKEN_DATA.networks[4002].address */"0x3B4fa7b6496aB8f36727b7a2FfF2ea9F1eB06E82");
   const [contractABI, setContractABI] = useState(/* POKETOKEN_DATA.abi */
   
   [
@@ -171,6 +171,11 @@ const [contractAddress, setContractAddress] = useState(/* POKETOKEN_DATA.network
               "internalType": "uint256",
               "name": "speed",
               "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isReadyForBattle",
+              "type": "bool"
             }
           ],
           "indexed": false,
@@ -341,26 +346,6 @@ const [contractAddress, setContractAddress] = useState(/* POKETOKEN_DATA.network
       "constant": true
     },
     {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "isReadyForBattle",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
       "inputs": [],
       "name": "name",
       "outputs": [
@@ -428,6 +413,11 @@ const [contractAddress, setContractAddress] = useState(/* POKETOKEN_DATA.network
           "internalType": "uint256",
           "name": "speed",
           "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "isReadyForBattle",
+          "type": "bool"
         }
       ],
       "stateMutability": "view",
@@ -438,52 +428,51 @@ const [contractAddress, setContractAddress] = useState(/* POKETOKEN_DATA.network
       "inputs": [
         {
           "internalType": "address",
-          "name": "from",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "to",
+          "name": "",
           "type": "address"
         },
         {
           "internalType": "uint256",
-          "name": "tokenId",
+          "name": "",
           "type": "uint256"
         }
       ],
-      "name": "safeTransferFrom",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
+      "name": "pokemonsOf",
+      "outputs": [
         {
-          "internalType": "address",
-          "name": "from",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "to",
-          "type": "address"
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
         },
         {
           "internalType": "uint256",
-          "name": "tokenId",
+          "name": "id",
           "type": "uint256"
         },
         {
-          "internalType": "bytes",
-          "name": "data",
-          "type": "bytes"
+          "internalType": "uint256",
+          "name": "attack",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "defense",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "speed",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "isReadyForBattle",
+          "type": "bool"
         }
       ],
-      "name": "safeTransferFrom",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -558,27 +547,50 @@ const [contractAddress, setContractAddress] = useState(/* POKETOKEN_DATA.network
       "constant": true
     },
     {
-      "inputs": [
+      "inputs": [],
+      "name": "getPokemons",
+      "outputs": [
         {
-          "internalType": "address",
-          "name": "from",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "to",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "tokenId",
-          "type": "uint256"
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "attack",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "defense",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "speed",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isReadyForBattle",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct PokeToken.Pokemon[]",
+          "name": "",
+          "type": "tuple[]"
         }
       ],
-      "name": "transferFrom",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -606,6 +618,80 @@ const [contractAddress, setContractAddress] = useState(/* POKETOKEN_DATA.network
           "type": "uint256"
         }
       ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
     },
