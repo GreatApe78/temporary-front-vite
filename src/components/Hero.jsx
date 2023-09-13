@@ -1,5 +1,6 @@
 //import ConnectWalletBtn from './ConnectWalletBtn';
 import { ConnectWallet } from "@thirdweb-dev/react";
+import pikachuLogo from "../assets/picachu_logo.jpg"
 export default function Hero() {
 	
 	return (
@@ -7,8 +8,8 @@ export default function Hero() {
 			<div className="row flex-lg-row-reverse align-items-center g-5 py-5">
 				<div className="col-10 col-sm-8 col-lg-6">
 					<img
-						src="https://freesvgs.com/wp-content/uploads/2021/06/Pikachu-SVG-File-Free-425x425.png"
-						className="d-block mx-lg-auto img-fluid"
+						src={pikachuLogo}
+						className="d-block mx-lg-auto img-fluid rounded"
 						alt="Bootstrap Themes"
 						width="700"
 						height="500"
