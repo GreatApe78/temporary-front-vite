@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Hero from './components/Hero';
 import Header from './components/Header';
 import MintForm from './components/MintForm';
-import PokemonCard from './components/PokemonCard';
+
 import PokemonInventory from './components/PokemonInventory';
 
 function App() {
