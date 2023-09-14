@@ -5,6 +5,7 @@ import { useAddress } from '@thirdweb-dev/react';
 import { useContract } from '../contexts/ContractContext';
 import { sendPokemon } from '../web3-connection/sendPokemons';
 import { callPokemon } from '../web3-connection/callPokemon';
+import { trainPokemon } from '../web3-connection/trainPokemon';
 
 export default function PokemonInventory() {
 	const [pokemons, setPokemons] = useState([]);
@@ -13,7 +14,7 @@ export default function PokemonInventory() {
 	function handlePokemonsFetch() {
 		getPokemons(account, contractAddress, contractABI)
 			.then((pokemonList) => {
-				console.log(pokemonList);
+				//console.log(pokemonList);
 				setPokemons(pokemonList);
 			})
 			.catch((err) => {
@@ -44,7 +45,16 @@ export default function PokemonInventory() {
 			})
 		})
 	}
-	
+	function handleTrainPokemon(id){
+		return new Promise((resolve,reject)=>{
+			trainPokemon(id,account,contractAddress,contractABI)
+			.then((receipt)=>{
+				resolve(receipt)
+			}).catch((err)=>{
+				reject(err)
+			})
+		})
+	}
 	useEffect(() => {
         
         handlePokemonsFetch();
@@ -66,6 +76,7 @@ export default function PokemonInventory() {
 								name={pokemon.name}
 								isReadyForBattle={pokemon.isReadyForBattle}
 								handleSendOrCallPokemon={handleSendOrCallPokemon}
+								handleTrainPokemon={handleTrainPokemon}
 							/>
 						))
 					) : (

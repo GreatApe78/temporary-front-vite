@@ -26,10 +26,7 @@ function MintForm() {
 				
 			});
 	}
-	function handleNameInputChange(e){
-		e.preventDefault()
-		setName(e.target.value)
-	}
+
 	return (
 		<div>
 			<div className="container col-xl-10 col-xxl-8 px-4 py-5">
@@ -37,9 +34,7 @@ function MintForm() {
 					<div className="col-lg-7 text-center text-lg-start">
 						<h1 className="display-4 fw-bold lh-1 mb-3">Mint Your Pokemon!</h1>
 						<p className="col-lg-10 fs-4">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
-							molestiae tempora a, enim omnis aliquam expedita cupiditate
-							doloremque repellat. Facilis.
+							Click in The button to receive the next Pokemon in the Pokedex order!
 						</p>
 					</div>
 					<div className="col-md-10 mx-auto col-lg-5">

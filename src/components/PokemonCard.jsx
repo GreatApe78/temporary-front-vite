@@ -7,22 +7,38 @@ export default function PokemonCard({
 	id,
 	name,
 	isReadyForBattle,
-	handleSendOrCallPokemon
+	handleSendOrCallPokemon,
+	handleTrainPokemon,
 }) {
-	const [loading,setLoading] = useState(false)
-
-	function handleClick(){
-		setLoading(true)
-		handleSendOrCallPokemon(id,isReadyForBattle)
-		.then((transactionHash)=>{
-			console.log(transactionHash)
-		}).catch((err)=>{
-			console.log(err)
-		}).finally(()=>{
-			setLoading(false)
-		})
+	const [loading, setLoading] = useState(false);
+	const [trainBtnLoading, setTrainBtnLoading] = useState(false);
+	function handleClick() {
+		setLoading(true);
+		handleSendOrCallPokemon(id, isReadyForBattle)
+			.then((transactionHash) => {
+				console.log(transactionHash);
+			})
+			.catch((err) => {
+				console.log(err);
+			})
+			.finally(() => {
+				setLoading(false);
+			});
 	}
 
+	function handleTrainButtonClick() {
+		setTrainBtnLoading(true);
+		handleTrainPokemon(id)
+			.then((transactionReceipt) => {
+				console.log(transactionReceipt);
+			})
+			.catch((err) => {
+				console.log(err);
+			})
+			.finally(() => {
+				setTrainBtnLoading(false);
+			});
+	}
 	return (
 		<div className="col-md-4">
 			<div className="card mb-4 shadow-sm">
@@ -34,6 +50,17 @@ export default function PokemonCard({
 				<div className="card-body">
 					<h4>{name ? name : 'No name provided'}</h4>
 				</div>
+				{isReadyForBattle ? (
+					<div className="card-body">
+						<h6 className="text-danger">
+							Out of the Pokeball and ready to battle!
+						</h6>
+					</div>
+				) : (
+					<div className="card-body">
+						<h6 className="text-success">Sleeping inside the pokeball! </h6>
+					</div>
+				)}
 				<div className="card-body">
 					<p className="card-text">ID: {id}</p>
 					<p className="card-text">Attack: {attack}</p>
@@ -43,27 +70,64 @@ export default function PokemonCard({
 					<div className="d-flex justify-content-between align-items-center">
 						<div className="btn-group">
 							{isReadyForBattle ? (
-								<button
-									type="button"
-									className="btn btn-sm btn-success"
-									onClick={handleClick}
-								>
-									{loading?(<Spinner/>):("Call Pokemon")}
-								</button>
+								<>
+									<div className="btn-group">
+										<button
+											type="button"
+											className="btn btn-sm btn-success"
+											onClick={handleClick}
+										>
+											{loading ? <Spinner /> : 'Back To the Pokeball!'}
+										</button>
+										<button
+											type="button"
+											className="btn btn-sm btn-info"
+											onClick={handleTrainButtonClick}
+										>
+											{trainBtnLoading ? <Spinner /> : 'Train'}
+										</button>
+									</div>
+								</>
 							) : (
 								<button
 									type="button"
 									className="btn btn-sm btn-warning"
 									onClick={handleClick}
 								>
-									{loading?(<Spinner/>):("Send Pokemon")}
+									{loading ? <Spinner /> : 'Unleash Pokemon!'}
 								</button>
 							)}
 						</div>
-					
 					</div>
 				</div>
 			</div>
 		</div>
 	);
 }
+
+/* 
+<button
+type="button"
+className="btn btn-sm btn-success"
+onClick={handleClick}
+>
+{loading ? <Spinner /> : 'Back to Pokeball!'}
+</button> */
+
+/**
+ * 
+ * 
+ * 
+ * 
+ * 									<div className="btn-group">
+										<button
+											type="button"
+											className="btn btn-sm btn-warning"
+											onClick={handleClick}
+										>
+											{loading ? <Spinner /> : 'Unleash Pokemon!'}
+										</button>
+										<button type="button" className="btn btn-sm btn-info" onClick={handleTrainButtonClick}>
+											{trainBtnLoading ? <Spinner /> : 'Train'}
+										</button>
+ */

@@ -1,6 +1,6 @@
 //import ConnectWalletBtn from './ConnectWalletBtn';
 import { ConnectWallet } from "@thirdweb-dev/react";
-import pikachuLogo from "../assets/picachu_logo.jpg"
+import picachuLogo from "../assets/picachu_logo.jpg"
 export default function Hero() {
 	
 	return (
@@ -8,8 +8,8 @@ export default function Hero() {
 			<div className="row flex-lg-row-reverse align-items-center g-5 py-5">
 				<div className="col-10 col-sm-8 col-lg-6">
 					<img
-						src={pikachuLogo}
-						className="d-block mx-lg-auto img-fluid rounded"
+						src={picachuLogo}
+						className="d-block mx-lg-auto img-fluid"
 						alt="Bootstrap Themes"
 						width="700"
 						height="500"
@@ -21,7 +21,7 @@ export default function Hero() {
 						Crypto NFT Game!
 					</h1>
 					<p className="lead">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi possimus praesentium obcaecati adipisci perferendis minima deserunt! Iusto blanditiis alias debitis.
+						In this App. You can connect your Wallet. Mint your Pokemon NFT to your Wallet. Put it for battle. Train it...Still in development
 					</p>
 					<div className="d-grid gap-2 d-md-flex justify-content-md-start">
 						{/* <ConnectWalletBtn /> */}
