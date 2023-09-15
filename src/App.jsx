@@ -5,6 +5,8 @@ import Header from './components/Header';
 import MintForm from './components/MintForm';
 import PokemonInventory from './components/PokemonInventory';
 import PokemonBattlePool from './components/PokemonBattlePool';
+import 'react-toastify/dist/ReactToastify.css';
+import {ToastContainer} from "react-toastify"
 
 function App() {
 	return (
@@ -13,10 +15,15 @@ function App() {
 			<Hero />
 			<hr />
 			<MintForm />
-			<h1 class="display-2 text-center">Your inventory</h1>
+			<hr />
+		
+			<h1 className="display-2 text-center">Your inventory</h1>
+
+			
 			<PokemonInventory/>
-			<h1 class="display-2 text-center">Battle Pool</h1>
+			<h1 className="display-2 text-center">Battle Pool</h1>
 			<PokemonBattlePool/>
+			<ToastContainer />
 		</div>
 	);
 }

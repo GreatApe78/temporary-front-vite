@@ -8,7 +8,6 @@ export default function BattleCard({
 	id,
 	name,
 	trainer,
-    handleBattle,
 	setModalShow,
 	setTarget
 }) {
@@ -29,6 +28,7 @@ export default function BattleCard({
         
         return `${prefix}...${suffix}`;
     }
+	const formattedName = name ? name.charAt(0).toUpperCase() + name.slice(1) : 'No name provided';
 	return (
 		<div className="col-md-4 ">
 			<div className="card mb-4 shadow-sm  p-3">
@@ -39,14 +39,14 @@ export default function BattleCard({
 				/>
                 <div className='bg-light rounded'>
                 <div className="card-body">
-					<h4>{name ? name : 'No name provided'}</h4>
+					<h4>{formattedName}</h4>
 				</div>
 				<div className="card-body">
-					<p className="card-text">ID: {id}</p>
-					<p className="card-text">Attack: {attack}</p>
-					<p className="card-text">Defense: {defense}</p>
-					<p className="card-text">Speed: {speed}</p>
-                    <p className="card-text">Trainer: {shortenEthereumAddress(trainer)}</p>
+					<p className="card-text"> <strong>ID:</strong> {id} </p>
+					<p className="card-text"> <strong>Attack:</strong> {attack}</p>
+					<p className="card-text"> <strong>Defense:</strong> {defense}</p>
+					<p className="card-text"> <strong>Speed:</strong> {speed}</p>
+                    <p className="card-text"> <strong>Trainer:</strong> {shortenEthereumAddress(trainer)}</p>
 
 					<div className="d-flex justify-content-between align-items-center">
 						<div className="btn-group">

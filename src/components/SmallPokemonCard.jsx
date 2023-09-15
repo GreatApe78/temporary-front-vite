@@ -18,11 +18,12 @@ export default function SmallPokemonCard({name,setSelected,id,handleChoose}) {
             setLoading(false)
         })
     }
-  
+    const formattedName = name ? name.charAt(0).toUpperCase() + name.slice(1) : 'No name provided';
     return (
         <div
         className="bg-light border  d-flex p-1 align-items-center mt-2 mb-2 rounded card-hover b-1"
         onClick={handleCardClick}
+        
       >
         <div>
           <img
@@ -31,10 +32,10 @@ export default function SmallPokemonCard({name,setSelected,id,handleChoose}) {
             alt="image"
           />
         </div>
-        <h3>
-          {name} #{id}
+        <h3 className="m-3">
+          {formattedName} #{id}
         </h3>
-        {loading?(<div><Spinner /></div>):(<></>)}
+        {loading?(<div><Spinner animation="border" /></div>):(<></>)}
       </div>
   )
 }

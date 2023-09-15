@@ -1,5 +1,5 @@
 import { useContract } from "../contexts/ContractContext";
-import pokebolaPNG from "../assets/pokebola.png"
+
 export default function Header() {
 	const {contractAddress} = useContract()
 	return (
@@ -10,7 +10,7 @@ export default function Header() {
 					className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
 				>
 					<img
-						src={pokebolaPNG}
+						src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/770px-Pok%C3%A9_Ball_icon.svg.png"
 						width="40"
 						alt="Logo"
 					/>

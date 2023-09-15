@@ -12,11 +12,15 @@ export default function PokemonCard({
 }) {
 	const [loading, setLoading] = useState(false);
 	const [trainBtnLoading, setTrainBtnLoading] = useState(false);
+	const formattedName = name ? name.charAt(0).toUpperCase() + name.slice(1) : 'No name provided';
+
 	function handleClick() {
 		setLoading(true);
 		handleSendOrCallPokemon(id, isReadyForBattle)
 			.then((transactionHash) => {
 				console.log(transactionHash);
+				let a = "mateus"
+				console.log()
 			})
 			.catch((err) => {
 				console.log(err);
@@ -48,7 +52,7 @@ export default function PokemonCard({
 					width={'100%'}
 				/>
 				<div className="card-body">
-					<h4>{name ? name : 'No name provided'}</h4>
+					<h4>{formattedName}</h4>
 				</div>
 				{isReadyForBattle ? (
 					<div className="card-body">
@@ -62,10 +66,10 @@ export default function PokemonCard({
 					</div>
 				)}
 				<div className="card-body">
-					<p className="card-text">ID: {id}</p>
-					<p className="card-text">Attack: {attack}</p>
-					<p className="card-text">Defense: {defense}</p>
-					<p className="card-text">Speed: {speed}</p>
+					<p className="card-text"><strong>ID:</strong> {id}</p>
+					<p className="card-text"> <strong>Attack:</strong>{attack}</p>
+					<p className="card-text"> <strong>Defense:</strong> {defense}</p>
+					<p className="card-text"> <strong>Speeed:</strong> {speed}</p>
 
 					<div className="d-flex justify-content-between align-items-center">
 						<div className="btn-group">
@@ -105,29 +109,3 @@ export default function PokemonCard({
 	);
 }
 
-/* 
-<button
-type="button"
-className="btn btn-sm btn-success"
-onClick={handleClick}
->
-{loading ? <Spinner /> : 'Back to Pokeball!'}
-</button> */
-
-/**
- * 
- * 
- * 
- * 
- * 									<div className="btn-group">
-										<button
-											type="button"
-											className="btn btn-sm btn-warning"
-											onClick={handleClick}
-										>
-											{loading ? <Spinner /> : 'Unleash Pokemon!'}
-										</button>
-										<button type="button" className="btn btn-sm btn-info" onClick={handleTrainButtonClick}>
-											{trainBtnLoading ? <Spinner /> : 'Train'}
-										</button>
- */
